@@ -1,0 +1,41 @@
+Proiect PA - Etapa 1 - Echipa "Dama de Inima Neagra"
+
+
+
+Instrucțiuni de compilare:
+     Pentru a compila intai se ruleaza comanda "make" sau "make build" 
+iar pentru a rula "xboard -fcp "make run"". Pentru a elimina obiectele
+si executabilul se poate rula comanda "make clean". Am implementat 
+mutarea tuturor celor 8 pioni, deci botul va da resign numai atunci cand
+toti cei 8 pioni fie sunt blocati, fie nu mai exista pe tabla.
+
+
+Detalii despre structura proiectului:
+    Folosim un enum pentru a atribui fiecarui tip de piesa un cod(intreg),
+avem o tabla formata din 144 de patrate (64 ale tablei si 80 pentru
+borduri/control). Retinem in cate un vector sau variabila pozitia pieselor
+pe tabla pentru o accesare a pieselor mai facila. De asemenea retinem partea
+care e la mutare si numarul de piese de pe tabla la un anumit moment dat.
+    Am creat fisierul util.c pentru a stoca principalele functii care
+interactioneaza cu tabla. Printre ele se numara resetGame care reseteaza
+tabla, afterMove care actualizeaza tabla dupa o comanda, attack care genereaza
+o mutare cu un pion disponibil sau da resign daca toti pionii sunt blocati
+checkForValid, care verifica ca mutarea pionului sa fie valida, findAndReplace
+folosita pentru a elimina o piesa de pe tabla si functiile de conversie
+convertToLabel, converteste pozitia pe tabla in eticheta (b3, g5, a1 etc) si
+convertPos care converteste invers.
+    In fisierul sah.c are loc dialogul cu xboard si sunt apelate functiile
+din util.c in functie de comenzile pe care le are de executat. Procesarea
+comenzilor se face diferentiat in bucatile de cod marcate cu etichetele
+aferente.
+    
+
+Surse de inspirație:
+  Canalul de Youtube BlueFeverSoft: https://www.youtube.com/user/BlueFeverSoft
+  Documentatia xboard: https://www.gnu.org/software/xboard/engine-intf.html
+
+
+Responsabilitatea fiecărui membru al echipei:
+    In util.c si sah.c am lucrat preponderent astfel: util.c - Andrei Iulian Cucu,
+Cristian Dima; sah.c si debugging - Rares Matei, Robert Andrei Nita. Corectiile de
+erori, headere, ajustari, etc. le-am facut impreuna.
